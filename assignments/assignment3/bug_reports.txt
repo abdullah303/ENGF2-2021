@@ -1,0 +1,5 @@
+bug 1: turtles dont work. cant land on them. instant death. drains all lives
+bug 2: restart doesnt allow movement of anything.
+bug 3: die once dont get reset to sstart poisition so drains all deaths.
+bug 4: time doesnt work on first round.
+bug 5: can run downwards off screen.
