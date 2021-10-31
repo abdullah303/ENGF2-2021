@@ -3,3 +3,7 @@ bug 2: restart doesnt allow movement of anything.
 bug 3: die once dont get reset to sstart poisition so drains all deaths.
 bug 4: time doesnt work on first round.
 bug 5: can run downwards off screen.
+bug 6: left most pit doesnt work
+
+fix 1: in fr_model.py. on line 374. typo on_long instead of on_log
+fix 2: in fr_model.py. on line 323 to new_life function. added line self.frog.reset_postition()

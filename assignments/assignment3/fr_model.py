@@ -34,8 +34,11 @@ class RiverObject():
 
     def contains(self, frog):
         (frog_x, frog_y) = frog.get_position()
+        #print(frog_x, frog_y, self.y, self.x)
         if frog_y != self.y or frog_x < self.x or frog_x > self.x + self.width:
+            #print("false")
             return False
+        #print("true")
         return True
 
 #logs and turtles are both river objects - they move and act mostly the same
@@ -317,6 +320,7 @@ class Model():
             
     def new_life(self):
         self.controller.update_lives(self.lives)
+        self.frog.reset_position()
 
     def game_over(self):
         self.game_running = False
@@ -368,7 +372,7 @@ class Model():
             # check if it's now on any other log
             for log in self.logs:
                 if log.contains(self.frog):
-                    on_long = log
+                    on_log = log
                     break
         if on_log is None:
             # frog is not on a log - it must be in the water
