@@ -35,7 +35,7 @@ class RiverObject():
     def contains(self, frog):
         (frog_x, frog_y) = frog.get_position()
         #print(frog_x, frog_y, self.y, self.x)
-        if frog_y != self.y or frog_x < self.x or frog_x > self.x + self.width:
+        if frog_y != self.y or frog_x + 10 < self.x or frog_x > self.x + self.width:
             #print("false")
             return False
         #print("true")
@@ -264,9 +264,12 @@ class Model():
         # the left hand home has centre position of spacing/2 (green to
         # the left of the home) + GRID_SIZE/2 (to get the centre of the
         # grid square)
-        x = (spacing + GRID_SIZE)//2
+        #x = (spacing + GRID_SIZE)//2
+        x = -100
+        print("spacing: {} x: {}".format(spacing, x))
         for i in range(0,6):
             x = x + GRID_SIZE + spacing
+            print("{}\n".format(x))
             self.homes_x.append(x)
             self.homes_occupied.append(False)
 
@@ -393,7 +396,9 @@ class Model():
     def check_frog_entering_home(self):
         # frog is attempting to enter home
         (x, y) = self.frog.get_position()
+        print(self.homes_x)
         for i in range(0, 5):
+            print(abs(self.homes_x[i] - x), GRID_SIZE/2)
             if abs(self.homes_x[i] - x) < GRID_SIZE/2 and not self.homes_occupied[i]:
                 #we're in a free home
                 self.frog_is_home(i)

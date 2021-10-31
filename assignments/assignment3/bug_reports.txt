@@ -1,9 +1,15 @@
-bug 1: turtles dont work. cant land on them. instant death. drains all lives
-bug 2: restart doesnt allow movement of anything.
-bug 3: die once dont get reset to sstart poisition so drains all deaths.
-bug 4: time doesnt work on first round.
-bug 5: can run downwards off screen.
-bug 6: left most pit doesnt work
 
-fix 1: in fr_model.py. on line 374. typo on_long instead of on_log
-fix 2: in fr_model.py. on line 323 to new_life function. added line self.frog.reset_postition()
+bug 1: The turtles do not work if you land on them. You just lose a live if you land on them. You should be able to stand on them.
+       I fixed this by changing a typo on line 374 of fr_model.py, where it said "on_long" instead of "on_log".
+
+bug 2: If you die, you stand still and all your lives are drained until game over. When you die, you should lose one life and be
+       spawn. I fixed this by adding the line "self.frog.reset_postition()" to the "new_life" function.
+
+bug 3: The left nost pit doesnt work. If you try land on it, you will die. You should be able to land on it so that you can
+       finish the level. I fixed this by changing the starting location of the pit creating function to -100 instead of 100.
+
+bug 4: Time doesn't decrease. It should decrease as you play. I'm not sure how to fix this.
+
+bug 5: I'm not sure if this is a bug, but I think the turtles need some more tolerance if a frog lands on the left hand side.
+       Sometime's it looks like you should've landed, but it counts as you dying. I added an arbritary tolerance of 10 pixels
+       to landing on the left side of the log on the "contain" function, and the game feels smoother.
